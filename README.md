@@ -78,7 +78,7 @@ https://github.com/itaijj/vLLM_bench/blob/main/benchmark_metrics_summary.csv
 ## Analysis
 ### What do the results tell you about the performance of your serving setup?
 Both TTFT and throughput increases ( almost linearly? ) when concurrency is reasonable compared to what the server can serve when we did not reach any system max capacity in memory or max-num-seqs.  <br> 
-But when the max concurency is close to max-num-seqs the monotone relation to TTFT and throughtput starts to break,  <br> 
+But when the max concurency is close to max-num-seqs the monotonic increasing relation to TTFT and throughtput starts to break,  <br> 
 
 The throughput stops increasing in approxmatly linear phase and turns to a plateu ( not increasing anymore ).  <br> 
 
