@@ -35,7 +35,7 @@ then run
 
 ## How I configure vLLM
 I run vLLM with limiting it's maximum concurrent requests to 50 using --max-num-seqs 50 to make the analysis more interesting ( and not finish my CPU/GPU memory). <br> 
-I also choose Meta-Llama-3.2-1B-Instruct as it fits my GPU memory.
+I also choose Meta-Llama-3.2-1B-Instruct with quantization bitsandbytes and kv-cache-dtype fp8_e5m2 as it is supported by my GPU and fits my GPU memory.
 
 ## How I configure GuideLLM benchmark 
 GuideLLM is part of the vLLM project so it is natural to choose it if use vLLM.  <br> 
@@ -74,8 +74,29 @@ https://github.com/itaijj/vLLM_bench/blob/main/benchmark_metrics_summary.csv
 ## A graph showing time-to-first-token (ms) vs. the number of concurrent requests.
 ![plot](plots/TTFT.png)
 
+## Analysis
+### What do the results tell you about the performance of your serving setup?
+Both TTFT and throughput increases ( almost linearly? ) when concurrency is reasonable compared to what the server can serve when we did not reach any system max capacity in memory or max-num-seqs.  <br> 
+But when the max concurency is close to max-num-seqs the monotone relation to TTFT and throughtput starts to break,  <br> 
 
+The throughput stops increasing in approxmatly linear phase and turns to a plateu ( not increasing anymore ).  <br> 
 
+meanwhile TTFT exponentialy grows, as many requests can't be handled by the server as it is busy 100% of the times ( it reached  max-num-seqs ).  <br> 
 
+## Where do you observe performance bottlenecks (e.g., does latency increase significantly after a certain number of users)?
 
+The latency increase significantly when number of users reaches the server max capacity of users which is correlated with the GPU memory and request serving times .  <br> 
+If we don't define the max-num-seqs then the vLLM KV cache and other parameters saved per user can make the GPU memory full (I didn't want to get there).  <br> 
+Then we reach same situation described in previous question.
+
+## What is one potential optimization you would explore next to improve performance?
+1. Model quantization - if we further decrease the model size by using improved and smaller lower-precision  weights  ( even 4-bit - which was not supported by my GPU ) then the model will take less GPU memory which can be utilized by the vLLM server ( cache, larger batch size and more)
+
+2. Make max seuqence length shorter - as tranformer complexity is O(n^2) by sequence length ( without optimization and caching) reduction of sequence length n makes the serving of each request faster. and bounded by max_seq_len^2. 
+
+3.  Replace model with faster or smaller model ( flash attention or some distilled version )
+
+4.  Use more GPUs or better GPUs ( more memory, better mixed precision implementation, more paralalisem ) 
+
+5. Improve request scheduling by using their input length or predicted output length ( serve the short requests first)
 
