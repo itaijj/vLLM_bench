@@ -36,7 +36,7 @@ then run
 
 ## How I configure vLLM
 I run vLLM with limiting it's maximum concurrent requests to 50 using --max-num-seqs 50 to make the analysis more interesting ( and not finish my CPU/GPU memory). <br> 
-I also choose Meta-Llama-3.2-1B-Instruct with quantization bitsandbytes and kv-cache-dtype fp8_e5m2 as it is supported by my GPU and fits my GPU memory.
+I  choose as LLM Meta-Llama-3.2-1B-Instruct , configured with quantization bitsandbytes and kv-cache-dtype fp8_e5m2 as it is supported by my GPU and fits my GPU memory.
 
 ## How I configure GuideLLM benchmark 
 GuideLLM is part of the vLLM project so it is natural to choose it if use vLLM.  <br> 
