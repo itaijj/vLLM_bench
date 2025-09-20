@@ -92,7 +92,7 @@ Then we reach same situation described in previous question.
 ## What is one potential optimization you would explore next to improve performance?
 1. Model quantization - if we further decrease the model size by using improved and smaller lower-precision  weights  ( even 4-bit - which was not supported by my GPU ) then the model will take less GPU memory which can be utilized by the vLLM server ( cache, larger batch size and more)
 
-2. Make max seuqence length shorter - as tranformer complexity is O(n^2) by sequence length ( without optimization and caching) reduction of sequence length n makes the serving of each request faster. and bounded by max_seq_len^2. 
+2. Make max seuqence length shorter - as tranformer complexity is O(n^2) by sequence length ( without optimization and caching) reduction of sequence length n makes the serving of each request faster. Now the serving time will bounded by O(max_seq_len^2). 
 
 3.  Replace model with faster or smaller model ( flash attention or some distilled version )
 
