@@ -48,13 +48,14 @@ I set prompt_tokens=128,output_tokens=64 to make it supported by the chosen LLM 
 
 ## Results and analysis
 
-[link text](benchmark_metrics_summary.csv)
+![Alt text](benchmark_metrics_summary.csv)
 
 ## A graph showing throughput (output tokens/sec) vs. the number of concurrent requests
-https://github.com/itaijj/vLLM_bench/blob/main/plots/throughput.png?raw=true
+![plot](plots/throughput.png)
 
-## A graph showing throughput (output tokens/sec) vs. the number of concurrent requests
-https://github.com/itaijj/vLLM_bench/blob/main/plots/TTFT.png?raw=true
+## A graph showing time-to-first-token (ms) vs. the number of concurrent requests.
+![plot](plots/TTFT.png)
+
 
 
 
