@@ -1,5 +1,5 @@
-pip install vllm
-pip install guidellm
-pip install seaborn
-pip install pandas
-pip install numpy
+vllm
+guidellm
+seaborn
+pandas
+numpy
