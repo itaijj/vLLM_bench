@@ -47,6 +47,10 @@ I also set --max-requests 100 to make the benchmark run short ( auto value is 10
 I set prompt_tokens=128,output_tokens=64 to make it supported by the chosen LLM while also not too slow.
 
 ## Results and analysis
+original file
+https://github.com/itaijj/vLLM_bench/blob/main/benchmark_metrics_summary.csv
+
+
 | File                | Throughput (tokens/sec) | TTFT (ms)          | ITL (ms)           | E2E Latency (ms)   | successful | errored | incomplete | total | MAX_CONCURRENCY |
 | ------------------- | ----------------------- | ------------------ | ------------------ | ------------------ | ---------- | ------- | ---------- | ----- | --------------- |
 | throughput-1.json   | 176.96518609518185      | 142.62033462524414 | 14.926889699602883 | 1083.368525505066  | 100        | 0       | 0          | 100   | 1               |
@@ -61,7 +65,7 @@ I set prompt_tokens=128,output_tokens=64 to make it supported by the chosen LLM 
 | throughput-5.json   | 268.78800301738744      | 238.81426811218262 | 52.91046782145426  | 3572.4412918090816 | 100        | 0       | 0          | 100   | 5               |
 | throughput-50.json  | 780.9697529598922       | 1514.2618989944458 | 170.3552846681504  | 12246.83022737503  | 100        | 0       | 0          | 100   | 50              |
 | throughput-55.json  | 748.4625104733378       | 2152.501938343048  | 177.89952944195463 | 13360.371215343475 | 100        | 0       | 0          | 100   | 55              |
-![Alt text](benchmark_metrics_summary.csv)
+
 
 ## A graph showing throughput (output tokens/sec) vs. the number of concurrent requests
 ![plot](plots/throughput.png)
