@@ -2,6 +2,9 @@
 
 This project uses vLLM as the inference server for Meta-Llama-3.2-1B-Instruct because it provides high-throughput, memory-efficient inference with OpenAI-compatible REST API support.
 
+## Why vLLM?
+vLLM is chosen for its efficient memory usage, high throughput, and native support for OpenAI-compatible REST APIs, making it ideal for local LLM inference.
+
 ## Quickstart
 Make sure you have nvidia GPU with at least 4GB of Dedicated GPU memory and recently released linux OS ( tested on Ubuntu 22.04.5 LTS  ) 
 
@@ -29,9 +32,6 @@ then run
 ```bash
 ./run_benchmark
 ```
-
-## Why vLLM?
-vLLM is chosen for its efficient memory usage, high throughput, and native support for OpenAI-compatible REST APIs, making it ideal for local LLM inference.
 
 ## How I configure vLLM
 I run vLLM with limiting it's maximum concurrent requests to 50 using --max-num-seqs 50 to make the analysis more interesting ( and not finish my CPU/GPU memory).
