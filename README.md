@@ -1,6 +1,7 @@
 ## Part 1: Deploy an Open-Source LLM
 
 This project uses vLLM as the inference server for Meta-Llama-3.2-1B-Instruct because it provides high-throughput, memory-efficient inference with OpenAI-compatible REST API support.
+I prefered to deploy it directly with local python enviroment as docker includes extra over-head for my private computer ( less flexability in playing with paramters and taking more memory)
 
 ## Why vLLM?
 vLLM is chosen for its efficient memory usage, high throughput, and native support for OpenAI-compatible REST APIs, making it ideal for local LLM inference.
